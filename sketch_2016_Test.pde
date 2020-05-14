@@ -1,5 +1,8 @@
 Cloud[] clouds = new Cloud[5];
 Plane p;
+Box b;
+
+boolean pressed = false;
 
 void setup()
 {
@@ -14,6 +17,7 @@ void setup()
   float planeH = planeW/4;
   
   p = new Plane(width/2, planeH * 2, planeW, planeH);
+  b = new Box(width/2, planeH * 4, p.h/2);
 }
 
 void draw()
@@ -33,4 +37,22 @@ void draw()
   
   p.display();
   p.move(3);
+  
+  if(pressed == true)
+  {
+    b.display();
+    b.fall(10);
+  }
+  else
+  {
+    b.move(p.x + p.w/1.75);
+  }
+}
+
+void keyPressed()
+{
+  if(key == ' ')
+  {
+    pressed = true;
+  }
 }
