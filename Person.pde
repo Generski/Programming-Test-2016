@@ -29,4 +29,24 @@ class Person
     line(x + w/4, y + h, x + w/4, y + 2 * h);
     line(x + 3 * w/4, y + h, x + 3 * w/4, y + 2 * h);
   }
+  
+  void moveToBox(float tempX, float tempY, float speed)
+  {
+    x += speed;
+    
+    if(tempY > y)
+    {
+      y += speed;
+    }
+    else
+    {
+      y -= speed;
+    }
+    
+    if(x >= tempX)
+    {
+      x = tempX;
+      y = tempY;
+    }
+  }
 }

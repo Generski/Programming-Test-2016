@@ -47,6 +47,7 @@ void draw()
   {
     b.display();
     b.fall(10);
+    person.moveToBox(b.x, b.fallPos, 2);
   }
   else
   {
