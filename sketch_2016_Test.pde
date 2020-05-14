@@ -1,6 +1,7 @@
 Cloud[] clouds = new Cloud[5];
 Plane p;
 Box b;
+Person person;
 
 boolean pressed = false;
 
@@ -18,6 +19,7 @@ void setup()
   
   p = new Plane(width/2, planeH * 2, planeW, planeH);
   b = new Box(width/2, planeH * 4, p.h/2);
+  person = new Person(width/10, height - height/4, 15, 20);
 }
 
 void draw()
@@ -29,15 +31,18 @@ void draw()
   fill(0, 255, 0);
   rect(0, height/2, width, height/2);
   
+  //Clouds
   for(int i = 0 ; i < clouds.length ; i++)
   {
     clouds[i].display();
     clouds[i].move();
   }
   
+  //Plane
   p.display();
   p.move(3);
   
+  //Box
   if(pressed == true)
   {
     b.display();
@@ -47,6 +52,9 @@ void draw()
   {
     b.move(p.x + p.w/1.75);
   }
+  
+  //Person
+  person.display();
 }
 
 void keyPressed()
