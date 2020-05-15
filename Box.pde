@@ -20,6 +20,15 @@ class Box
     rect(x, y, l, l);
   }
   
+  void reset(float tempX, float tempY)
+  {
+    x = tempX;
+    y = tempY;
+    noStroke();
+    fill(255, 0, 0);
+    rect(x, y, l, l);
+  }
+  
   void move(float tempX)
   {
     x = tempX;

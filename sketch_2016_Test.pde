@@ -52,25 +52,26 @@ void draw()
   {
     //Box
     b.display();
-    b.fall(10);
 
     float d = dist(person.location.x, person.location.y, b.x, b.fallPos);
 
     if (hasTheBox == false)
     {
+      b.fall(10);
       person.moveToBox(b.x, b.fallPos, 0, 100);
-      
-      if(d < 1)
+
+      if (d < 1)
       {
         hasTheBox = true;
+        b.reset(width/2, 0);
       }
-    }
-    else
+    } else
     {
       person.goBack(width/10, height - height/4);
-      if(dist(person.location.x, person.location.y, width/10, height - height/4) < 1)
+      if (dist(person.location.x, person.location.y, width/10, height - height/4) < 1)
       {
         hasTheBox = false;
+        pressed = false;
       }
     }
   } else
