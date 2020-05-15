@@ -2,6 +2,7 @@ Cloud[] clouds = new Cloud[5];
 Plane p;
 Box b;
 Person person;
+boolean hasTheBox = false;
 
 boolean pressed = false;
 
@@ -43,25 +44,39 @@ void draw()
   p.display();
   p.move(3);
 
+  //Person
+  person.display();
+
   //Box
   if (pressed == true)
   {
+    //Box
     b.display();
     b.fall(10);
-    if (dist(person.location.x, person.location.y, b.x, b.fallPos) < 1)
+
+    float d = dist(person.location.x, person.location.y, b.x, b.fallPos);
+
+    if (hasTheBox == false)
     {
-      person.goBack(new PVector(0, height/2));
-    } else
+      person.moveToBox(b.x, b.fallPos, 0, 100);
+      
+      if(d < 1)
+      {
+        hasTheBox = true;
+      }
+    }
+    else
     {
-      person.moveToBox(b.x, b.fallPos);
+      person.goBack(width/10, height - height/4);
+      if(dist(person.location.x, person.location.y, width/10, height - height/4) < 1)
+      {
+        hasTheBox = false;
+      }
     }
   } else
   {
     b.move(p.x + p.w/1.75);
   }
-
-  //Person
-  person.display();
 }
 
 void keyPressed()

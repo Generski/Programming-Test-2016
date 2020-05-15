@@ -38,32 +38,35 @@ class Person
     line(location.x + 3 * w/4, location.y + h, location.x + 3 * w/4, location.y + 2 * h);
   }
 
-  void moveToBox(float tempX, float tempY)
+  void moveToBox(float tempX, float tempY, float tempTX, float tempTY)
   {
     PVector boxPos = new PVector(tempX, tempY);
 
-    boxPos.sub(location);
-    boxPos.setMag(1);
-    acceleration = boxPos;
+    PVector target = boxPos;
+
+    target.sub(location);
+    target.setMag(1);
+    acceleration = target;
 
     velocity.add(acceleration);
     location.add(velocity);
     velocity.limit(1);
+
+    println("doing shit");
   }
 
-  void goBack(PVector tempStartPos)
+  void goBack(float tempX, float tempY)
   { 
-    /*startPos = tempStartPos;
+    startPos = new PVector(tempX, tempY);
     startPos.sub(location);
     startPos.setMag(1);
     acceleration = startPos;
 
     velocity.add(acceleration);
     location.add(velocity);
-    velocity.limit(1);*/
-    
-    velocity.mult(-1);
-    
-    println(startPos);
+    velocity.limit(1);
+
+    println("Not doing shit");
+    //location = new PVector(0, 0);
   }
 }
