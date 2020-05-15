@@ -11,7 +11,7 @@ float planeH = planeW/4;
 
 void setup()
 {
-  size(500, 500, P2D);
+  size(900, 900, P2D);
 
   for (int i = 0; i < clouds.length; i++)
   {
@@ -61,12 +61,15 @@ void draw()
     if (hasTheBox == false)
     {
       b.fall(10);
-      person.moveToBox(b.x, b.fallPos, 0, 100);
-
-      if (d < 1)
+      if (b.y >= b.fallPos)
       {
-        hasTheBox = true;
-        b.move(p.x + p.w/1.75, planeH * 4);
+        person.moveToBox(b.x, b.fallPos, 0, 100);
+
+        if (d < 1)
+        {
+          hasTheBox = true;
+          b.move(p.x + p.w/1.75, planeH * 4);
+        }
       }
     } else
     {
