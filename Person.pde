@@ -51,8 +51,9 @@ class Person
     velocity.add(acceleration);
     location.add(velocity);
     velocity.limit(1);
-
-    println("doing shit");
+    
+    //Jiggle
+    location.add(new PVector(0, random(-1, 1)));
   }
 
   void goBack(float tempX, float tempY)
@@ -65,8 +66,8 @@ class Person
     velocity.add(acceleration);
     location.add(velocity);
     velocity.limit(1);
-
-    println("Not doing shit");
-    //location = new PVector(0, 0);
+    
+    //Jiggle
+    location.add(new PVector(0, random(-1, 1)));
   }
 }

@@ -6,6 +6,9 @@ boolean hasTheBox = false;
 
 boolean pressed = false;
 
+float planeW = 120;
+float planeH = planeW/4;
+
 void setup()
 {
   size(500, 500, P2D);
@@ -14,9 +17,6 @@ void setup()
   {
     clouds[i] = new Cloud(random(0, width), random(30, height/2 - 30), 100, 60);
   }
-
-  float planeW = 120;
-  float planeH = planeW/4;
 
   p = new Plane(width/2, planeH * 2, planeW, planeH);
   b = new Box(width/2, planeH * 4, p.h/2);
@@ -50,8 +50,11 @@ void draw()
   //Box
   if (pressed == true)
   {
-    //Box
-    b.display();
+    if (hasTheBox == false)
+    {
+      //Box
+      b.display();
+    }
 
     float d = dist(person.location.x, person.location.y, b.x, b.fallPos);
 
@@ -63,7 +66,7 @@ void draw()
       if (d < 1)
       {
         hasTheBox = true;
-        b.reset(width/2, 0);
+        b.move(p.x + p.w/1.75, planeH * 4);
       }
     } else
     {
@@ -76,7 +79,7 @@ void draw()
     }
   } else
   {
-    b.move(p.x + p.w/1.75);
+    b.move(p.x + p.w/1.75, planeH * 4);
   }
 }
 

@@ -24,14 +24,19 @@ class Box
   {
     x = tempX;
     y = tempY;
-    noStroke();
-    fill(255, 0, 0);
-    rect(x, y, l, l);
+    //noStroke();
+    //fill(255, 0, 0);
+    //rect(x, y, l, l);
   }
   
-  void move(float tempX)
+  void move(float tempX, float tempY)
   {
     x = tempX;
+    y = tempY;
+    
+    fallPos = random(height/2, height);
+    
+    println(fallPos);
   }
   
   void fall(float speed)
